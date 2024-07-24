@@ -2,20 +2,21 @@ FROM myssh
 
 WORKDIR /root
 # install kafka
-RUN apt -y install curl
 RUN curl https://archive.apache.org/dist/kafka/2.5.0/kafka_2.12-2.5.0.tgz --output kafka.tgz
 RUN tar -xvf kafka.tgz
 RUN ln -s kafka_2.12-2.5.0 kafka
-RUN apt-get update
-RUN apt-get install -y netcat
 
 # config
 COPY server.properties /root/kafka/config/server.properties
-COPY zookeeper.properties /root/config/kafka/zookeeper.properties
-COPY .bashrc /root/.bashrc
-RUN /bin/bash -c ". ~/.bashrc"
+COPY zookeeper.properties /root/kafka/config/zookeeper.properties
+
+ENV KAFKA_HOME=/root/kafka
+ENV PATH $JAVA_HOME/bin:$PATH
 
 # init kafka
-WORKDIR /root/kafka
-COPY kafka-init.sh /root/kafka/kafka-init.sh
-COPY kafka-restart.sh /root/kafka/kafka-restart.sh
+WORKDIR $KAFKA_HOME
+COPY kafka-init.sh $KAFKA_HOME/kafka-init.sh
+COPY kafka-stop-all.sh $KAFKA_HOME/kafka-stop-all.sh
+COPY kafka-restart.sh $KAFKA_HOME/kafka-restart.sh
+
+# set kafka ENV

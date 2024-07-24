@@ -5,3 +5,5 @@ RUN apt install openssh-server openssh-client -y
 RUN ssh-keygen -t rsa -m PEM -P '' -f ~/.ssh/id_rsa
 RUN cd ~/.ssh && \
     cat id_rsa.pub >> authorized_keys
+RUN apt -y install curl
+RUN apt-get install -y netcat

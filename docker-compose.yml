@@ -1,42 +1,46 @@
 services:
-  myssh1:
-    image: myssh
-    container_name: myssh1
+  mykafka1:
+    image: mykafka
+    container_name: mykafka1
     networks:
       KafkaClusterPractice:
+    volumes:
+      - zookeeper_data_1:/root/kafka/zookeeper
+      - kafka_data_1:/root/kafka/data
+      - kafka_log_1:/root/kafka/logs
     command: [ "sh", "-c", "service ssh start; tail -f /dev/null" ]
-  myssh2:
-    image: myssh
-    container_name: myssh2
+  mykafka2:
+    image: mykafka
+    container_name: mykafka2
     networks:
       KafkaClusterPractice:
+    volumes:
+      - zookeeper_data_2:/root/kafka/zookeeper
+      - kafka_data_2:/root/kafka/data
+      - kafka_log_2:/root/kafka/logs
+    command: [ "sh", "-c", "service ssh start; tail -f /dev/null" ]
+  mykafka3:
+    image: mykafka
+    container_name: mykafka3
+    networks:
+      KafkaClusterPractice:
+    volumes:
+      - zookeeper_data_3:/root/kafka/zookeeper
+      - kafka_data_3:/root/kafka/data
+      - kafka_log_3:/root/kafka/logs
     command: [ "sh", "-c", "service ssh start; tail -f /dev/null" ]
 
-#  mykafka1:
-#    image: mykafka
-#    container_name: mykafka1
-#    networks:
-#      KafkaClusterPractice:
-#    command: [ "sh", "-c", "service ssh start;
-#              tail -f /dev/null" ]
-#
-#
-#  mykafka2:
-#    image: mykafka
-#    container_name: mykafka2
-#    networks:
-#      KafkaClusterPractice:
-#    command: [ "sh", "-c", "service ssh start;
-#              tail -f /dev/null" ]
-#  mykafka3:
-#    image: mykafka
-#    container_name: mykafka3
-#    networks:
-#      base-distributed-etl-network:
-#    command: [ "sh", "-c", "service ssh start;
-#              tail -f /dev/null" ]
+volumes:
+  zookeeper_data_1:
+  kafka_data_1:
+  kafka_log_1:
+  zookeeper_data_2:
+  kafka_data_2:
+  kafka_log_2:
+  zookeeper_data_3:
+  kafka_data_3:
+  kafka_log_3:
 
-#volumes:
 
 networks:
   KafkaClusterPractice:
