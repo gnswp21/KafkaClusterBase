@@ -1,0 +1,42 @@
+services:
+  myssh1:
+    image: myssh
+    container_name: myssh1
+    networks:
+      KafkaClusterPractice:
+    command: [ "sh", "-c", "service ssh start; tail -f /dev/null" ]
+  myssh2:
+    image: myssh
+    container_name: myssh2
+    networks:
+      KafkaClusterPractice:
+    command: [ "sh", "-c", "service ssh start; tail -f /dev/null" ]
+
+#  mykafka1:
+#    image: mykafka
+#    container_name: mykafka1
+#    networks:
+#      KafkaClusterPractice:
+#    command: [ "sh", "-c", "service ssh start;
+#              tail -f /dev/null" ]
+#
+#
+#  mykafka2:
+#    image: mykafka
+#    container_name: mykafka2
+#    networks:
+#      KafkaClusterPractice:
+#    command: [ "sh", "-c", "service ssh start;
+#              tail -f /dev/null" ]
+#  mykafka3:
+#    image: mykafka
+#    container_name: mykafka3
+#    networks:
+#      base-distributed-etl-network:
+#    command: [ "sh", "-c", "service ssh start;
+#              tail -f /dev/null" ]
+
+#volumes:
+
+networks:
+  KafkaClusterPractice:

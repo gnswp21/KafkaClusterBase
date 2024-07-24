@@ -1,0 +1,7 @@
+FROM myjava
+
+RUN apt install openssh-server openssh-client -y
+# rsa 키 형식, PEM 형식,공백입력으로 암호 생성
+RUN ssh-keygen -t rsa -m PEM -P '' -f ~/.ssh/id_rsa
+RUN cd ~/.ssh && \
+    cat id_rsa.pub >> authorized_keys
