@@ -1,12 +1,12 @@
 # 개요
 
-주키퍼 앙상블을 이용해 3개의 브로커로 이루어진 카프카 클러스터를 구성하는 최소 세팅 예시
+도커 컨테이서 주키퍼 앙상블을 이용해 3개의 브로커로 이루어진 카프카 클러스터를 구성하는 최소 세팅 예시입니다.
 
 # 구조
 
 ## 자바, SSH, 카프카 설치 및 환경변수 설정
 
-`conf/java/Dockerfile-java, conf/ssh/Dockerfile-ssh,  conf/kafka/Dockerfile-kafka` 을 통해 자바, ssh, 카프카를 우분투에 다운 받고 설치
+`conf/java/Dockerfile-java, conf/ssh/Dockerfile-ssh,  conf/kafka/Dockerfile-kafka` 을 통해 자바, ssh, 카프카를 우분투에 다운 받고 설치합니다.
 
 ## 카프카, 주키퍼 설정
 
@@ -46,7 +46,7 @@ server.3=mykafka3:2888:3888
 
 `clientPort`  주키퍼의 외부 연결 포트
 
-`server.1=mykafka1:2888:3888`  [n번 주키퍼 서버의 호스트명 : 주키퍼가 내부적으로 사용하는 포트 1: 주키퍼가 내부적으로 사용하는 포트 2 ]  ← 각각의 서버에 대한 설정을 모두 기재
+`server.1=mykafka1:2888:3888`  [n번 주키퍼 서버의 호스트명 : 주키퍼가 내부적으로 사용하는 포트 1: 주키퍼가 내부적으로 사용하는 포트 2 ]  ← 각각의 서버에 대한 설정을 모두 기재하였습니다.
 
 - kafka-init.sh
 
@@ -76,13 +76,13 @@ done
 
 ```
 
-(3번째 줄) - (카프카 추가설정) [`broker.id`](http://broker.id) 카프카 설정에 브로커 아이디를 각각 1,2,3을 추가
+(3번째 줄) - (카프카 추가설정) [`broker.id`](http://broker.id) 카프카 설정에 브로커 아이디를 각각 1,2,3을 추가합니다
 
-(5번째 줄) - (주키퍼 추가설정)  주키퍼의 아이디가 담긴 myid 파일 생성
+(5번째 줄) - (주키퍼 추가설정)  주키퍼의 아이디가 담긴 myid 파일 생성합니다.
 
-(이후) 각각의 호스트에서 주키퍼 실행 후 카프카 실행. 주키퍼 실행 후 20초 sleep을 해줌으로써 주키퍼가 완전히 실행한 뒤에 카프카가 실행되게끔 설정
+(이후) 각각의 호스트에서 주키퍼 실행 후 카프카 실행. 주키퍼 실행 후 20초 sleep을 해줌으로써 주키퍼가 완전히 실행한 뒤에 카프카가 실행되게끔 설정합니다.
 
-(마지막 for문) 정상적으로 실행되었느지 확인하는 코드 생략 가능
+(마지막 for문) 정상적으로 실행되었느지 확인하는 코드 생략 가능합니다.
 
 ## 도커 컴포즈 설정
 
@@ -189,15 +189,15 @@ cat $KAFKA_HOME/logs/server.log
 ```
 
 - 주요 로그 내용 예시
-    1. 주키퍼 연결
+  1. 주키퍼 연결
 
   *[2024-07-24 03:23:39,255]* INFO *[ZooKeeperClient Kafka server]* Connected. (kafka.zookeeper.ZooKeeperClient)
 
-    1. 클러스터 아이디
+  1. 클러스터 아이디
 
   *[2024-07-24 03:23:39,531]* INFO Cluster ID = GdsyuwtoTOKCU0Hc5GLlSw (kafka.server.KafkaServer)
 
-    1. 클러스터에 브로커 등록
+  1. 클러스터에 브로커 등록
 
   *[2024-07-24 03:23:40,026]* INFO Registered broker 1 at path /brokers/ids/1 with addresses: ArrayBuffer(EndPoint(448066a9cb04,9092,ListenerName(PLAINTEXT),PLAINTEXT)), czxid (broker epoch): 24 (kafka.zk.KafkaZkClient)
 
