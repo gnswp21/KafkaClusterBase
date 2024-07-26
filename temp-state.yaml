@@ -20,5 +20,5 @@ spec:
             - containerPort: 9092
               name: broker
           command: [ "/bin/sh" ]
-          args: [ "-c", "tail -f /dev/null" ]
+          args: [ "-c", "service ssh start; tail -f /dev/null" ]
 
