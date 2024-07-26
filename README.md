@@ -19,5 +19,8 @@ rm -rf $KAFKA_HOME/data/meta.properties
 tail -f $KAFKA_HOME/logs/server.log
 cat $KAFKA_HOME/logs/server.log
 
+<statefulset_name>-<pod_ordinal>.<headless_service_name>.<namespace>.svc.cluster.local
+
+kafka-0.kafka-svc-domain.default.svc.cluster.local
 
 
