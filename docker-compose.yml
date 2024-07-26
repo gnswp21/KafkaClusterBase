@@ -6,9 +6,10 @@ services:
       KafkaClusterPractice:
     ports:
       - 19094:19094
+      - 80:80
     environment:
-      KAFKA_LISTENERS: INTERNAL://:9092,EXTERNAL://:19094
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://mykafka1:9092,EXTERNAL://43.203.166.170:19094
+      KAFKA_LISTENERS: INTERNAL://mykafka1:9092,EXTERNAL://mykafka1:19094
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://mykafka1:9092,EXTERNAL://localhost:19094
     volumes:
       - zookeeper_data_1:/root/kafka/zookeeper
       - kafka_data_1:/root/kafka/data
@@ -22,8 +23,10 @@ services:
     ports:
       - 29094:29094
     environment:
-      KAFKA_LISTENERS: INTERNAL://:9092,EXTERNAL://:29094
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://mykafka1:9092,EXTERNAL://43.203.166.170:29094
+      KAFKA_LISTENERS: INTERNAL://mykafka2:9092,EXTERNAL://mykafka2:29094
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://mykafka2:9092,EXTERNAL://localhost:29094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
     volumes:
       - zookeeper_data_2:/root/kafka/zookeeper
       - kafka_data_2:/root/kafka/data
@@ -37,8 +40,10 @@ services:
     ports:
       - 39094:39094
     environment:
-      KAFKA_LISTENERS: INTERNAL://:9092,EXTERNAL://:39094
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://mykafka1:9092,EXTERNAL://43.203.166.170:39094
+      KAFKA_LISTENERS: INTERNAL://mykafka3:9092,EXTERNAL://mykafka3:39094
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://mykafka3:9092,EXTERNAL://localhost:39094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
     volumes:
       - zookeeper_data_3:/root/kafka/zookeeper
       - kafka_data_3:/root/kafka/data
