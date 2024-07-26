@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: kafka
 spec:
-  serviceName: kafka-svc
+  serviceName: kafka-svc-domain
   replicas: 3
   selector:
     matchLabels:
