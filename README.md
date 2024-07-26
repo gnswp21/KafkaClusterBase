@@ -11,7 +11,7 @@ bin/kafka-console-consumer.sh --bootstrap-server mykafka1:9092 --topic hello.kaf
 
 
 bin/kafka-topics.sh --create --topic webtoon-topic \
---bootstrap-server mykafka1:9092, mykafka2:9092, mykafka3:9092 \
+--bootstrap-server kafka-0.kafka-svc-domain.default.svc.cluster.local:9092, kafka-1.kafka-svc-domain.default.svc.cluster.local:9092, kafka-2.kafka-svc-domain.default.svc.cluster.local:9092 \
 --partitions 3 \
 --replication-factor 3
 

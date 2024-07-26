@@ -2,7 +2,7 @@ for i in 0 1 2; do
   host="kafka-$i.kafka-svc-domain.default.svc.cluster.local"
   ssh -o StrictHostKeyChecking=no $host echo "\"broker.id=$i\" >> /root/kafka/config/server.properties"
   ssh $host mkdir -p /root/kafka/zookeeper
-  ssh $host echo "\"$i\" > /root/kafka/zookeeper/myid"
+  ssh $host echo "\"$((i + 1))\" > /root/kafka/zookeeper/myid"
 
   ssh $host "sh /root/kafka/bin/zookeeper-server-start.sh -daemon /root/kafka/config/zookeeper.properties"
 done
