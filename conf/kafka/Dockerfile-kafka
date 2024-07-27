@@ -8,15 +8,9 @@ RUN ln -s kafka_2.12-2.5.0 kafka
 
 # config
 COPY server.properties /root/kafka/config/server.properties
-COPY zookeeper.properties /root/kafka/config/zookeeper.properties
+COPY kafka-init.sh /root/kafka/kafka-init.sh
+COPY temp /root/kafka/temp
+# Set entrypoint
+#ENTRYPOINT ["sh", "/root/kafka/kafka-init.sh"]
 
-ENV KAFKA_HOME=/root/kafka
-ENV PATH $JAVA_HOME/bin:$PATH
 
-# init kafka
-WORKDIR $KAFKA_HOME
-COPY kafka-init.sh $KAFKA_HOME/kafka-init.sh
-COPY kafka-stop-all.sh $KAFKA_HOME/kafka-stop-all.sh
-COPY kafka-restart.sh $KAFKA_HOME/kafka-restart.sh
-
-# set kafka ENV
