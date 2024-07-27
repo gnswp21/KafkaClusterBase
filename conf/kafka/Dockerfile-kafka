@@ -1,4 +1,4 @@
-FROM myssh
+FROM openjdk:11
 
 WORKDIR /root
 # install kafka
