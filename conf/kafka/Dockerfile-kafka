@@ -5,12 +5,12 @@ WORKDIR /root
 RUN curl https://archive.apache.org/dist/kafka/2.5.0/kafka_2.12-2.5.0.tgz --output kafka.tgz
 RUN tar -xvf kafka.tgz
 RUN ln -s kafka_2.12-2.5.0 kafka
+RUN apt-get update && apt-get install -y gettext
 
 # config
 COPY server.properties /root/kafka/config/server.properties
 COPY kafka-init.sh /root/kafka/kafka-init.sh
-COPY temp /root/kafka/temp
 # Set entrypoint
-#ENTRYPOINT ["sh", "/root/kafka/kafka-init.sh"]
+ENTRYPOINT ["sh", "/root/kafka/kafka-init.sh"]
 
 
