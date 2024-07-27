@@ -8,8 +8,8 @@ RUN ln -s kafka_2.12-2.5.0 kafka
 RUN apt-get update && apt-get install -y gettext
 
 # config
-COPY server.properties /root/kafka/config/server.properties
 COPY kafka-init.sh /root/kafka/kafka-init.sh
+WORKDIR /root/kafka
 # Set entrypoint
 ENTRYPOINT ["sh", "/root/kafka/kafka-init.sh"]
 
