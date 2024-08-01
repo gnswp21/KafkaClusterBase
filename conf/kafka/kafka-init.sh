@@ -8,6 +8,7 @@ advertised.listeners=${KAFKA_ADVERTISED_LISTENERS}
 listener.security.protocol.map=${KAFKA_LISTENER_SECURITY_PROTOCOL_MAP}
 inter.broker.listener.name=${KAFKA_INTER_BROKER_LISTENER_NAME}
 log.dirs=${KAFKA_LOG_DIRS}
+auto.create.topics.enable=${KAFKA_AUTO_CREATE_TOPICS_ENABLE}
 EOF
 
 # Substitute environment variables in server.properties
